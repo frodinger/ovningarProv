@@ -13,11 +13,21 @@ const currencies = [
   { currency: "JPY", value: 5000 }, // 5000 Japansk yen
 ];
 
+/*
+Denna funktion använder map-metoden för att iterera över varje objekt i currencies-arrayen.
+För varje objekt hämtas växelkursen från exchangeRates-objektet baserat på valutan.
+Sedan multipliceras värdet med växelkursen för att få det konverterade värdet i USD.
+Det konverterade värdet och valutan "USD" läggs till i en ny array som returneras av funktionen.
+*/
 function convertToUSD(currencyArr) {
   //Din kod här
-  // EUR 100 * 1.12
-  // GBP 50 * 1.32
-  // JPY 5000 * 0.0094
+  const convertedCurrencies = currencies.map((currency) => {
+    const exchangeRate = exchangeRates[currency.currency];
+    const convertedValue = currency.value * exchangeRate;
+    return { currency: currency.currency, value: Math.floor(convertedValue) };
+  });
+
+  return convertedCurrencies;
 }
 
 console.log(convertToUSD(currencies));

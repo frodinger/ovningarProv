@@ -4,6 +4,49 @@
 // Valuta
 // bild på flagga med tillhörande alt-text
 
+const countriesEl = document.getElementById("countries");
+document.body.style.backgroundColor = "#eee";
+document.body.style.fontFamily = "sans-serif";
+
+async function getCountry() {
+    const response = await fetch("https://restcountries.com/v3.1/all");
+    const data = await response.json();
+
+    console.log(data);
+
+    data.forEach((country) => {
+        const containerEl = document.createElement("div");
+
+        const nameEl = document.createElement("div");
+        nameEl.innerHTML = `<h1>${country.name.official}</h1>`;
+
+        const currencyEl = document.createElement("div");
+        currencyEl.innerHTML = `<p>Currency: ${country.currencies.currencies}</p>`;
+
+        const flagEl = document.createElement("div");
+        const imgEl = document.createElement("img");
+        imgEl.src = country.flags.png;
+        
+        const altTextEl = document.createElement("div");
+        altTextEl.style.fontSize = "12px";
+        if (country.flags.alt != null) {
+            altTextEl.innerHTML = `<p>${country.flags.alt}</p>`;
+            imgEl.alt = country.flags.alt;
+        } else if (country.flags.alt == null) {
+            imgEl.alt = `The flag of ${country.name.common}`;
+        }
+
+        countriesEl.appendChild(containerEl);
+        containerEl.appendChild(nameEl);
+        containerEl.appendChild(currencyEl);
+        containerEl.appendChild(flagEl);
+        flagEl.appendChild(imgEl);
+        flagEl.appendChild(altTextEl);
+    });
+}
+
+getCountry();
+
 // 7.2 (3p) Gör sidan responsive:
 // I desktop-vy ska varje land visas i 3 kolumner.
 // I mobil-vy ska varje land visas i en kolumn med 100% width.

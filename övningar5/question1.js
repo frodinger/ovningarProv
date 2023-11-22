@@ -3,6 +3,17 @@
 // av dessa tal.
 // tips: Googla hur man räknar ut medelvärdet av ett antal tal
 
+
 function calculateAverage(arr) {
   // Din kod här
+  let sum = 0;
+
+  arr.forEach((num) => {
+    sum += num;
+  });
+
+  return sum / arr.length;
 }
+
+console.log(calculateAverage([5, 5, 5]));
+console.log(calculateAverage([1, 2, 3, 4, 5]));

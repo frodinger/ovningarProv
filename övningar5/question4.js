@@ -15,6 +15,9 @@ const currencies = [
 
 function convertToUSD(currencyArr) {
   //Din kod här
+  // EUR 100 * 1.12
+  // GBP 50 * 1.32
+  // JPY 5000 * 0.0094
 }
 
 console.log(convertToUSD(currencies));

@@ -2,17 +2,44 @@
 // strängar som input och returnerar en ny array där varje
 // ord börjar med en stor bokstav.
 
-const firstLowerCase = ["hej", "på", "dig"];
+/*
 
 function capitalizeWords(arr) {
-    const firstUpperCase = [];
+    const capitalize = [];
 
     for (let i = 0; i < arr.length; i++) {
-        firstUpperCase.push(arr[i][0].toUpperCase() + arr[i].substr(1));
+        capitalize.push(arr[i][0].toUpperCase() + arr[i].substr(1));
     }
 
-    return firstUpperCase;
+    return capitalize;
 }
 
-console.log(capitalizeWords(firstLowerCase));
+console.log(capitalizeWords(["hej", "på", "dig"]));
+*/
+
+// Davids kod
+
+function capitalizeWords(arr) {
+    
+    /*
+    const capitalizeArr = arr.map ( word => {
+        const firstLetter = word.substring(0, 1);
+        const theRest = word.substring(1);
+        
+        return firstLetter.toUpperCase() + theRest;
+    });
+    
+    return capitalizeArr;
+    */
+    
+    // alternativt använd return direkt istället för att spara ned det i en variabel
+    
+    return arr.map ( word => {
+        const firstLetter = word.substring(0, 1);
+        const theRest = word.substring(1);
+        
+        return firstLetter.toUpperCase() + theRest.toLowerCase();
+    });
+}
+
 console.log(capitalizeWords(["jag", "heter", "frej"]));

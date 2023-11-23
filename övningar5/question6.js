@@ -7,10 +7,10 @@ function generateRandomNumbers(min, max) {
     const randomArr = [];
 
     for ( let i = 0; i < 10; i++) {
-        randomArr.push(Math.floor(Math.random() * (max-min)) + min);
+        randomArr.push(Math.floor(Math.random() * (max-min + 1)) + min);
     }
 
     return randomArr;
 }
 
-console.log(generateRandomNumbers(1, 10));
+console.log(generateRandomNumbers(5, 10));

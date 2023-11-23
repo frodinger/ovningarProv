@@ -14,4 +14,21 @@ function findLongestWord(str) {
 }
   
 console.log(findLongestWord("The quick brown fox jumped over the lazy dog"));
-console.log(findLongestWord("jag gillar att ta sovmorgon"));
+
+// Davids kod
+
+function findLongestWordInSentence(sentence) {
+  const words = sentence.split(" ");
+  let longestWord = "";
+
+  words.forEach((word) => {
+
+    if (word.length > longestWord.length) {
+      longestWord = word;
+    }
+  });
+
+  return longestWord;
+}
+
+console.log(findLongestWordInSentence("jag gillar att ta sovmorgon"));

@@ -20,28 +20,27 @@ async function getCountry() {
         const nameEl = document.createElement("div");
         nameEl.innerHTML = `<h1>${country.name.official}</h1>`;
 
+        let currency = "";
+        if (country.currencies) {
+            const currencyArr = Object.values(country.currencies);
+            currency = currencyArr[0].name;
+        }
         const currencyEl = document.createElement("div");
-        currencyEl.innerHTML = `<p>Currency: ${country.currencies.currencies}</p>`;
+        currencyEl.innerHTML = `<p>Currency: ${currency}</p>`;
 
-        const flagEl = document.createElement("div");
-        const imgEl = document.createElement("img");
-        imgEl.src = country.flags.png;
-        
-        const altTextEl = document.createElement("div");
-        altTextEl.style.fontSize = "12px";
+        const flagEl = document.createElement("img");
+        flagEl.src = country.flags.png;
+
         if (country.flags.alt != null) {
-            altTextEl.innerHTML = `<p>${country.flags.alt}</p>`;
-            imgEl.alt = country.flags.alt;
+            flagEl.alt = country.flags.alt;
         } else if (country.flags.alt == null) {
-            imgEl.alt = `The flag of ${country.name.common}`;
+            flagEl.alt = `The flag of ${country.name.common}`;
         }
 
         countriesEl.appendChild(containerEl);
         containerEl.appendChild(nameEl);
         containerEl.appendChild(currencyEl);
         containerEl.appendChild(flagEl);
-        flagEl.appendChild(imgEl);
-        flagEl.appendChild(altTextEl);
     });
 }
 

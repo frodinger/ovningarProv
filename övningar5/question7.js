@@ -18,7 +18,7 @@ async function getCountry() {
         const containerEl = document.createElement("div");
 
         const nameEl = document.createElement("div");
-        nameEl.innerHTML = `<h1>${country.name.official}</h1>`;
+        nameEl.innerHTML = `<h1>${country.name.common}</h1><p>Official name: ${country.name.official}</p>`;
 
         let currency = "";
         if (country.currencies) {
